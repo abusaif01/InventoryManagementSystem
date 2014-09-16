@@ -1,0 +1,58 @@
+package com.inventory.model;
+
+/**
+ * @author Saif
+ * 
+ * This is how a model class should look like.
+ * Just gave you a demo.
+ * 
+ */
+public class User {
+	
+	private String useName;
+	private String passwprd;
+	private String firstName;
+	private String lastName;
+	private String email;
+	
+	
+	
+	
+	/**
+	 * These method are called accessor and mutator
+	 * Ecplise will auto generate this part of codes if you want
+	 * Dont need to write this code by yourelf
+	 * 
+	 */
+	public String getUseName() {
+		return useName;
+	}
+	public void setUseName(String useName) {
+		this.useName = useName;
+	}
+	public String getPasswprd() {
+		return passwprd;
+	}
+	public void setPasswprd(String passwprd) {
+		this.passwprd = passwprd;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+}
