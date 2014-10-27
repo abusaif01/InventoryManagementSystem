@@ -6,19 +6,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.inventory.model.User;
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class UserDatabaseManager {
 	Connection connection;
 	Statement statement;
-	public User readUserFromDatabse(String id)
+	
+	public User readUserFromDatabse(String userName,String password)
 	{
+		
 		User user=new User();
 		initConnection();
 		String sql;
-		sql="SELECT * FROM info WHERE customr_id='"+id+"'";
-		System.out.println(sql);
+		//System.out.println(userName);
+		sql="SELECT * FROM user WHERE userName='"+userName+"' and password='"+password+"'";
+		//System.out.println(sql);
+
 		try {
+			//sql="SELECT * FROM user WHERE userName='"+userName+"' and password='"+password+"'";
 			ResultSet result=statement.executeQuery(sql);
 			int i=1;
 			result.first();
@@ -27,12 +31,19 @@ public class UserDatabaseManager {
 			 user.setEmail(result.getString(i++));
 			 user.setPasswprd(result.getString(i++));
 			return user;
-		} catch (SQLException e) {
-			e.printStackTrace();
+			
+		}
+		
+		
+		catch (SQLException e) {
+			//e.printStackTrace();
+			//System.out.println("Invalid [");
 		}
 		closeConnection();
 		return null;
 	}
+
+		
 	
 	public User[] getListOfAllUserFromDatabse()
 	{
@@ -41,8 +52,23 @@ public class UserDatabaseManager {
 	
 	public void insertUserIntoDatabse(User user)
 	{
+		initConnection();
+		
+		
+		String sqlInsert;
+
+		sqlInsert="INSERT INTO user VALUES ('"+user.getId()+"','"+user.getUserName()+"','"+user.getPasswprd()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+user.getEmail()+"')";
+		try {
+			statement.executeUpdate(sqlInsert);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		closeConnection();
 		
 	}
+	
 	
 	private void initConnection()
 	{
@@ -62,7 +88,7 @@ public class UserDatabaseManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+				
 	}
+
 }

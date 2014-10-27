@@ -10,7 +10,7 @@ package com.inventory.model;
 public class User {
 	
 	private int id;
-	private String useName;
+	private String userName;
 	private String passwprd;
 	private String firstName;
 	private String lastName;
@@ -25,11 +25,11 @@ public class User {
 	 * Dont need to write this code by yourelf
 	 * 
 	 */
-	public String getUseName() {
-		return useName;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUseName(String useName) {
-		this.useName = useName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPasswprd() {
 		return passwprd;
